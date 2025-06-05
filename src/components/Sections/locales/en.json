@@ -1,0 +1,9 @@
+{
+  "blockchain-apis": "Blockchain APIs",
+  "decentralized-storage-apis": "Decentralize storage APIs",
+  "name-logo": "{{name}} logo",
+  "toggle-networks-list": {
+    "true": "more",
+    "false": "less"
+  }
+}

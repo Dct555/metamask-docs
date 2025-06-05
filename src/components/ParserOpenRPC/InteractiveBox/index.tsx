@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Form from '@rjsf/core'
 import clsx from 'clsx'
@@ -91,6 +92,8 @@ export default function InteractiveBox({
   closeComplexTypeView,
   isOpen = false,
 }: InteractiveBoxProps) {
+  const { t } = useTranslation('components/ParserOpenRPC/InteractiveBox')
+
   const [parsedSchema, setParsedSchema] = useState<RJSFSchema>(null)
   const [defaultFormData, setDefaultFormData] = useState<any>({})
   const [currentFormData, setCurrentFormData] = useState<any>({})
@@ -288,8 +291,12 @@ export default function InteractiveBox({
   return parsedSchema ? (
     <>
       <div className={styles.tableHeadingRow}>
-        <div className={clsx(styles.tableHeadingColumn, 'font-weight-medium')}>Parameter</div>
-        <div className={clsx(styles.tableHeadingColumn, 'font-weight-medium')}>Value</div>
+        <div className={clsx(styles.tableHeadingColumn, 'font-weight-medium')}>
+          {t('parameter-label')}
+        </div>
+        <div className={clsx(styles.tableHeadingColumn, 'font-weight-medium')}>
+          {t('value-label')}
+        </div>
       </div>
       <Form
         schema={parsedSchema}
@@ -343,12 +350,12 @@ export default function InteractiveBox({
                   styles.footerButtonRightOutline
                 )}
                 onClick={handleCancelClick}>
-                Cancel
+                {t('cancel-button-text')}
               </button>
               <button
                 className={clsx(global.primaryBtn, styles.footerButtonRight)}
                 onClick={closeComplexTypeView}>
-                Save
+                {t('save-button-text')}
               </button>
             </div>
           ) : null}
