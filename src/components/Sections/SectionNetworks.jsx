@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { useColorMode } from '@docusaurus/theme-common'
@@ -8,6 +9,8 @@ import Button from '@site/src/components/elements/buttons/button'
 import styles from './SectionNetworks.module.scss'
 
 const SectionNetworks = () => {
+  const { t } = useTranslation('components/Sections')
+
   const [isNetworksListCollapsed, setIsNetworksListCollapsed] = useState(true)
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 768)
   const { colorMode } = useColorMode()
@@ -37,7 +40,7 @@ const SectionNetworks = () => {
     <li key={index} className={styles['item']}>
       <Link to={href} className={clsx(styles['inner'], 'text-decoration-none', 'link-styles-none')}>
         <div className={styles['logo-wrap']}>
-          <img src={logo} alt={`${name} logo`} />
+          <img src={logo} alt={t('name-logo', { name })} />
         </div>
         {name}
       </Link>
@@ -54,7 +57,7 @@ const SectionNetworks = () => {
       {isMobile && (
         <Button
           as="div"
-          label={`show ${isNetworksListCollapsed ? 'more' : 'less'} networks`}
+          label={t('toggle-networks-list', { isNetworksListCollapsed })}
           type={theme === 'dark' ? 'secondary' : 'primary'}
           icon={isNetworksListCollapsed ? 'plus' : 'minus'}
           className={styles['button']}
