@@ -32,8 +32,7 @@ export default function CardSection({ cards, colorPalette }: CardSectionProps): 
                       '--color-palette': `var(--developer-${colorPalette})`,
                     } as CSSProperties)
                   : {}
-              }
-            >
+              }>
               {cards?.length > 0 &&
                 cards.map(({ title, description, href }: CardItem, cardIndex: number) => (
                   <Card
