@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { createContext, useContext, useMemo, useState, useEffect } from 'react'
 import { usePluginData } from '@docusaurus/useGlobalData'
 import { ResponseItem, NETWORK_NAMES } from '@site/src/plugins/plugin-json-rpc'
@@ -36,6 +37,8 @@ interface ParserOpenRPCContextProps {
 export const ParserOpenRPCContext = createContext<ParserOpenRPCContextProps | null>(null)
 
 export default function ParserOpenRPC({ network, method, extraContent }: ParserProps) {
+  const { t } = useTranslation('components/ParserOpenRPC')
+
   const isBrowser = useIsBrowser()
   if (!isBrowser) {
     return null
@@ -300,7 +303,7 @@ export default function ParserOpenRPC({ network, method, extraContent }: ParserP
                       }
                     />
                   </button>
-                  Editing Param
+                  {t('editing-param')}
                 </span>
               ) : (
                 'Customize request'

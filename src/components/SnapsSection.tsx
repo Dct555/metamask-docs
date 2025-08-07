@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import Card, { type CardItem } from '@site/src/components/Card'
 import Heading from '@theme/Heading'
@@ -36,14 +37,12 @@ const CardList: CardItem[] = [
 ]
 
 export default function SnapsSection(): JSX.Element {
+  const { t } = useTranslation('components')
+
   return (
     <section className="container margin-top--lg margin-bottom--lg">
-      <Heading as="h1">Extend the functionality of MetaMask using Snaps</Heading>
-      <p>
-        A Snap is a JavaScript program run in an isolated environment that customizes the MetaMask
-        wallet experience. You can create a Snap that adds new API methods, adds support for
-        different blockchain protocols, or modifies existing functionalities.
-      </p>
+      <Heading as="h1">{t('extend-functionality-of-metamask-using-snaps')}</Heading>
+      <p>{t('snap-description-and-functionality')}</p>
       <div className="row">
         {CardList.map((props, idx) => (
           <Card key={idx} {...props} />

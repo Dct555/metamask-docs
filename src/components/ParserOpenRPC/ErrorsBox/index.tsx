@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { useColorMode } from '@docusaurus/theme-common'
 import clsx from 'clsx'
@@ -16,6 +17,8 @@ interface ErrorsBoxProps {
 }
 
 export default function ErrorsBox({ errors }: ErrorsBoxProps) {
+  const { t } = useTranslation('components/ParserOpenRPC/ErrorsBox')
+
   const { colorMode } = useColorMode()
   if (errors.length === 0) return null
 
@@ -24,7 +27,7 @@ export default function ErrorsBox({ errors }: ErrorsBoxProps) {
       <Heading
         as="h2"
         className={clsx(styles.heading2, styles.borderBottomLine, 'padding-vert--md')}>
-        Errors
+        {t('errors-title')}
       </Heading>
       <div className={styles.errWrapper}>
         <div
@@ -33,8 +36,8 @@ export default function ErrorsBox({ errors }: ErrorsBoxProps) {
             colorMode === 'light' ? styles.errRowHeadingLightView : styles.errRowHeadingDarkView,
             'type-paragraph-m font-primary font-weight-medium'
           )}>
-          <div className={styles.errColCode}>Code</div>
-          <div className={styles.errColMsg}>Message</div>
+          <div className={styles.errColCode}>{t('code-label')}</div>
+          <div className={styles.errColMsg}>{t('message-label')}</div>
         </div>
         {errors.map((err, i) => (
           <div key={`${err.code}-${i}`} className={styles.errRow}>
