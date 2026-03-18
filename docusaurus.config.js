@@ -179,6 +179,13 @@ const config = {
       : null,
     './src/plugins/launchdarkly',
     './src/plugins/sentry',
+    [
+      '@docusaurus/plugin-vercel-analytics',
+      {
+        debug: false,
+        mode: 'auto',
+      },
+    ],
   ],
   clientModules: [require.resolve('./src/client/scroll-fix.js')],
   themeConfig:
